@@ -17,7 +17,7 @@
     <div class="modal" id="myModal">
         <h1>Add a Book</h1>
        <div class="form">
-        <form method="post" onsubmit="addBookToLibrary(event)">
+        <form method="post" id="form" onsubmit="addBookToLibrary(event)">
             <div>
             <input type="text" name="title" class="labels" required placeholder="Title"></div>
             <div>
@@ -37,13 +37,7 @@
        </div>
     </div>
 
-    <div class="addedBooks">
-        <h2>ok</h2>
-        <h2>no</h2>
-        <h2>yes</h2>
-        <button class="readStatusBtn">Read</button><br>
-        <button class="removeBtn">Remove</button>
-    </div>
+    
 
     <script src="script.js"></script>
 </body>
