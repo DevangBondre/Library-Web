@@ -1,50 +1,49 @@
-
 function addBookToLibrary(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
-    const modal = document.getElementById('myModal')
-    modal.style.visibility = "hidden"
-    
+    const modal = document.getElementById('myModal');
+    modal.style.visibility = "hidden";
+
     var title = document.getElementsByName("title")[0].value;
     var author = document.getElementsByName("author")[0].value;
     var noOfPages = document.getElementsByName("noOfPages")[0].value;
     var status = document.getElementsByName("status")[0].checked ? "Read" : "Unread";
-
-  
+   
     var card = document.createElement("div");
     card.className = "addedBooks";
 
-  
     card.innerHTML = `
         <p>Title: ${title}</p>
         <p>Author: ${author}</p>
         <p>Pages: ${noOfPages}</p>
        
-        <button class="readStatusBtn">Status</button>
+        <button class="readStatusBtn" onclick="toggleReadStatus(this)">${status}</button>
         <button class="deleteBtn" onclick="deleteBook(this)">Delete</button> `;
 
-    
     document.body.appendChild(card);
 
-  
     card.style.visibility = "visible";
-    
 
-   
     document.getElementById("form").reset();
 }
 
+function toggleReadStatus(button) {
+    var statusBtn = button;
+    var status = statusBtn.textContent.trim().toLowerCase();
+
+    if (status === "read") {
+        statusBtn.textContent = "Unread";
+        statusBtn.style.backgroundColor = "#e74c3c"; 
+    } else {
+        statusBtn.textContent = "Read";
+        statusBtn.style.backgroundColor = "#4ade80"; 
+    }
+}
 
 function deleteBook(button) {
     var card = button.parentNode;
     card.parentNode.removeChild(card);
 }
-
-
-function toggleReadStatus(button) {
-    
-}
-
 
 document.getElementById("addBookBtn").addEventListener("click", function () {
     var modal = document.getElementById("myModal");
@@ -52,7 +51,6 @@ document.getElementById("addBookBtn").addEventListener("click", function () {
     modal.style.top = "50%";
     modal.style.visibility = "visible";
 });
-
 
 window.addEventListener("click", function (event) {
     var modal = document.getElementById("myModal");
@@ -62,5 +60,3 @@ window.addEventListener("click", function (event) {
         modal.style.visibility = "hidden";
     }
 });
-
-
